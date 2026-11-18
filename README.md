@@ -156,24 +156,18 @@ It helps reduce different forms of a word to a common base form.
 
 ```mermaid
 graph LR
-    subgraph Row1 [" "]
-        direction LR
-        A["Input Text"] --> B["Tokenization"]
-        B --> C["Text Normalization"]
-        C --> D["Stop words Removal"]
-    end
+    %% First row (left to right)
+    A["Input Text"] --> B["Tokenization"]
+    B --> C["Text Normalization"]
+    C --> D["Stop words Removal"]
 
-    D ==> E["POS tagging"]
+    %% Connection from first row to second row
+    D --> E["POS tagging"]
 
-    subgraph Row2 [" "]
-        direction RL
-        H["Processed Text"] --> G["Lemmatization"]
-        G --> F["Named Entity Recognition"]
-        F --> E
-    end
-
-    style Row1 fill:none,stroke:none
-    style Row2 fill:none,stroke:none
+    %% Second row (right to left)
+    E --> F["Named Entity Recognition"]
+    F --> G["Lemmatization"]
+    G --> H["Processed Text"]
 ```
 
 ##  Applications of NLP
